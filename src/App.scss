@@ -1,0 +1,13 @@
+html {
+  display: flex;
+  padding: 56px 0px 80px 0px;
+  justify-content: center;
+  background-color: #F5F7F7;
+}
+
+body {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

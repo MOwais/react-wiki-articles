@@ -1,0 +1,199 @@
+$neutralWhiteColor: #F5F7F7;
+$neutralGrayColor: #A7AAAB;
+$vl: #E7EAEB;
+$whiteColor: #fff;
+$selectedDateColor: #B3CEC9;
+$brandGreenColor: #025B4B;
+$textPrimaryColor: #020202;
+$borderRadius: 24px;
+
+
+.searchbar {
+  padding: 16px;
+  display: flex;
+  gap: 16px;
+  border-radius: 100px;
+  background-color: $whiteColor;
+  max-height: 96px !important;
+
+  &__content {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+
+    &__filter {
+      display: flex;
+      max-height: 72px;
+      max-width: 260px;
+      width: 100%;
+      padding: 12px;
+      gap: 24px;
+      border-radius: 100px;
+      align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $neutralWhiteColor;
+      }
+
+
+      .date {
+        display: flex;
+        flex-direction: column;
+
+        .react-datepicker {
+          font-weight: 500 !important;
+          border: none;
+          box-shadow: 0px 4px 24px 0px #0000001F;
+          border-radius: $borderRadius;
+          height: 280px;
+
+
+          &__input-container {
+            margin-left: -4px;
+          }
+
+          &__month-container {
+            font-family: Poppins;
+            font-size: 14px !important;
+          }
+
+          &__day {
+            font-weight: 400;
+
+            &--selected {
+              border-radius: 100px;
+              background-color: $selectedDateColor;
+              color: $brandGreenColor;
+              font-weight: 500 !important;
+            }
+          }
+
+          &__day-name {
+            font-size: 12px;
+            color: $neutralGrayColor;
+          }
+
+          &__current-month {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+
+          }
+
+          &__triangle::after,
+          &__triangle::before {
+            border: none !important;
+          }
+
+          &-popper {
+            transform: translate(230px, 220px) !important;
+          }
+
+          &__header {
+            font-family: Poppins;
+            background-color: $whiteColor;
+            border: none;
+            font-weight: 500;
+            border-radius: $borderRadius;
+          }
+        }
+      }
+
+      .select {
+        display: flex;
+        flex-direction: column;
+
+        [class*="-control"] {
+          border: none !important;
+          margin-left: -11px;
+          min-height: 24px !important;
+          cursor: pointer;
+          background: transparent;
+        }
+
+        [class*="-IndicatorsContainer"] {
+          display: none;
+        }
+
+        [class*="-Input"] {
+          margin: 0px;
+          padding-bottom: 0px;
+          padding-top: 0px;
+          z-index: 2;
+
+          input {
+            &:hover {
+              background-color: $neutralWhiteColor;
+            }
+          }
+        }
+
+        [class*="-menu"] {
+          margin-top: 16px;
+          width: 200px;
+          height: 282px;
+          text-align: center;
+          padding: 32px 16px;
+          gap: 24px;
+          border-radius: $borderRadius;
+          margin-left: -85px;
+          box-shadow: 0px 4px 24px 0px #0000001F;
+
+        }
+      }
+
+      img {
+        height: 48px;
+        width: 48px;
+      }
+
+      label {
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 50% !important;
+        color: $neutralGrayColor;
+        cursor: inherit;
+      }
+
+      input {
+        border: none;
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        height: 24px !important;
+        cursor: inherit;
+
+        &:hover {
+          background-color: $neutralWhiteColor;
+        }
+      }
+    }
+
+    &__vl {
+      display: flex;
+      border-left: 1px solid $vl;
+      height: 72px;
+      width: 0px !important;
+    }
+  }
+
+  &__search-button {
+    max-width: 160px;
+    width: 160px;
+    height: 64px;
+    border-radius: 100px;
+    background-color: $brandGreenColor;
+    color: $whiteColor;
+    font-weight: 500;
+    font-family: Poppins;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+  }
+}
