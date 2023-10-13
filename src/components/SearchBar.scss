@@ -1,7 +1,7 @@
-$neutralWhiteColor: #F5F7F7;
-$neutralGrayColor: #A7AAAB;
-$vl: #E7EAEB;
-$whiteColor: #fff;
+$colorWhiteNeutral: #F5F7F7;
+$colorGrayNeutral: #A7AAAB;
+$borderNeutralColor: #E7EAEB;
+$colorWhite: #fff;
 $selectedDateColor: #B3CEC9;
 $brandGreenColor: #025B4B;
 $textPrimaryColor: #020202;
@@ -13,7 +13,7 @@ $borderRadius: 24px;
   display: flex;
   gap: 16px;
   border-radius: 100px;
-  background-color: $whiteColor;
+  background-color: $colorWhite;
   max-height: 96px !important;
 
   &__content {
@@ -33,7 +33,7 @@ $borderRadius: 24px;
       cursor: pointer;
 
       &:hover {
-        background-color: $neutralWhiteColor;
+        background-color: $colorWhiteNeutral;
       }
 
 
@@ -47,6 +47,7 @@ $borderRadius: 24px;
           box-shadow: 0px 4px 24px 0px #0000001F;
           border-radius: $borderRadius;
           height: 280px;
+          width: 375px;
 
 
           &__input-container {
@@ -54,7 +55,7 @@ $borderRadius: 24px;
           }
 
           &__month-container {
-            font-family: Poppins;
+            // font-family: Poppins;
             font-size: 14px !important;
           }
 
@@ -71,7 +72,7 @@ $borderRadius: 24px;
 
           &__day-name {
             font-size: 12px;
-            color: $neutralGrayColor;
+            color: $colorGrayNeutral;
           }
 
           &__current-month {
@@ -91,8 +92,8 @@ $borderRadius: 24px;
           }
 
           &__header {
-            font-family: Poppins;
-            background-color: $whiteColor;
+            // font-family: Poppins;
+            background-color: $colorWhite;
             border: none;
             font-weight: 500;
             border-radius: $borderRadius;
@@ -120,11 +121,10 @@ $borderRadius: 24px;
           margin: 0px;
           padding-bottom: 0px;
           padding-top: 0px;
-          z-index: 2;
 
           input {
             &:hover {
-              background-color: $neutralWhiteColor;
+              background-color: $colorWhiteNeutral;
             }
           }
         }
@@ -140,6 +140,10 @@ $borderRadius: 24px;
           margin-left: -85px;
           box-shadow: 0px 4px 24px 0px #0000001F;
 
+          [class*="-option"] {
+            // font-family: Poppins;
+            font-weight: 400;
+          }
         }
       }
 
@@ -149,33 +153,34 @@ $borderRadius: 24px;
       }
 
       label {
-        font-family: Poppins;
+        // font-family: Poppins;
         font-weight: 500;
         font-size: 12px;
         line-height: 16px;
         letter-spacing: 50% !important;
-        color: $neutralGrayColor;
+        color: $colorGrayNeutral;
         cursor: inherit;
       }
 
       input {
         border: none;
-        font-family: Poppins;
+        // font-family: Poppins;
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;
         height: 24px !important;
         cursor: inherit;
+        background: transparent;
 
         &:hover {
-          background-color: $neutralWhiteColor;
+          background-color: $colorWhiteNeutral;
         }
       }
     }
 
     &__vl {
       display: flex;
-      border-left: 1px solid $vl;
+      border-left: 1px solid $borderNeutralColor;
       height: 72px;
       width: 0px !important;
     }
@@ -187,9 +192,9 @@ $borderRadius: 24px;
     height: 64px;
     border-radius: 100px;
     background-color: $brandGreenColor;
-    color: $whiteColor;
+    color: $colorWhite;
     font-weight: 500;
-    font-family: Poppins;
+    // font-family: Poppins;
     font-size: 16px;
     line-height: 24px;
     text-align: center;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import Select from "react-select";
+import { useeffect } from "react";
 import "./SearchBar.scss";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -26,9 +27,7 @@ const RESULTS_SIZE_OPTIONS = [
     label: "200",
   },
 ];
-const SearchBar = () => {
-  const [date, setDate] = useState(new Date(Date.now() - 86400000));
-  const [pageSize, setPageSize] = useState(100);
+const SearchBar = ({ setDate, setPageSize, pageSize, date }) => {
   const [showDateFilter, setShowDateFilter] = useState(false);
   const [showNumResultsFilter, setShowNumResultsFilter] = useState(false);
   return (
@@ -37,6 +36,9 @@ const SearchBar = () => {
         <div
           className="searchbar__content__filter"
           onClick={(e) => setShowDateFilter(!showDateFilter)}
+          onBlur={() => {
+            setShowDateFilter(false);
+          }}
         >
           <img src={require("../assets/calendar.png")} />
           <div className="search__content__filter date">
@@ -56,6 +58,9 @@ const SearchBar = () => {
         <div
           className="searchbar__content__filter"
           onClick={(e) => setShowNumResultsFilter(!showNumResultsFilter)}
+          onBlur={() => {
+            setShowNumResultsFilter(false);
+          }}
         >
           <img src={require("../assets/results_filter.png")} />
           <div className="search__content__filter select">
@@ -64,10 +69,22 @@ const SearchBar = () => {
             </label>
             <Select
               placeholder=""
-              value={100}
-              onChange={null}
+              value={RESULTS_SIZE_OPTIONS.filter(
+                (option) => option.value === pageSize
+              )}
+              onChange={(e) => setPageSize(e.value)}
               options={RESULTS_SIZE_OPTIONS}
               menuIsOpen={showNumResultsFilter}
+              styles={{
+                option: (provided, state, isFocused) => ({
+                  ...provided,
+                  backgroundColor: state.isSelected
+                    ? "#E68A00"
+                    : state.isFocused
+                    ? "#f1f3f3"
+                    : "inherit",
+                }),
+              }}
             />
           </div>
         </div>
