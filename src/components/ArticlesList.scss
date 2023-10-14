@@ -19,6 +19,11 @@ $colorWhite: #fff;
     max-height: 40px !important;
     height: 40px !important;
     justify-content: center;
-    width: 800px;
+  }
+}
+
+@media(max-width: 768px) {
+  .articles-list__pagination {
+    display: none;
   }
 }

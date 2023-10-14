@@ -4,3 +4,10 @@ html {
   justify-content: center;
   background-color: #F5F7F7;
 }
+
+@media(max-width: 768px) {
+  html {
+    display: block;
+    padding: 16px;
+  }
+}

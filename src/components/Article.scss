@@ -31,3 +31,9 @@ $colorGrayNeutral600: #737680;
     color: $colorGrayNeutral600;
   }
 }
+
+@media(max-width: 475px) {
+  .article {
+    flex-direction: column;
+  }
+}

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import Select from "react-select";
-import { useeffect } from "react";
 import "./SearchBar.scss";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -30,6 +29,7 @@ const RESULTS_SIZE_OPTIONS = [
 const SearchBar = ({ setDate, setPageSize, pageSize, date }) => {
   const [showDateFilter, setShowDateFilter] = useState(false);
   const [showNumResultsFilter, setShowNumResultsFilter] = useState(false);
+  const { innerWidth } = window;
   return (
     <div className="searchbar">
       <div className="searchbar__content">
@@ -65,7 +65,8 @@ const SearchBar = ({ setDate, setPageSize, pageSize, date }) => {
           <img src={require("../assets/results_filter.png")} />
           <div className="search__content__filter select">
             <label>
-              NUM RESULTS {showNumResultsFilter ? <>&#x25B2;</> : <>&#x25BC;</>}{" "}
+              {innerWidth >= 768 ? "NUM RESULTS" : "# RESULTS"}{" "}
+              {showNumResultsFilter ? <>&#x25B2;</> : <>&#x25BC;</>}{" "}
             </label>
             <Select
               placeholder=""
@@ -76,7 +77,7 @@ const SearchBar = ({ setDate, setPageSize, pageSize, date }) => {
               options={RESULTS_SIZE_OPTIONS}
               menuIsOpen={showNumResultsFilter}
               styles={{
-                option: (provided, state, isFocused) => ({
+                option: (provided, state) => ({
                   ...provided,
                   backgroundColor: state.isSelected
                     ? "#E68A00"
