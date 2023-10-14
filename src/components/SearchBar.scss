@@ -25,18 +25,26 @@ $borderRadius: 24px;
     &__filter {
       display: flex;
       max-height: 72px;
-      max-width: 260px;
+      max-width: 221px;
       width: 100%;
-      padding: 12px;
       gap: 24px;
       border-radius: 100px;
       align-items: center;
       cursor: pointer;
 
       &:hover {
+        transition: background-color 300ms ease-out;
         background-color: $colorWhiteNeutral;
       }
 
+
+      &__country {
+        max-width: 175px !important;
+      }
+
+      &__select {
+        max-width: 200px !important;
+      }
 
       .date {
         display: flex;
@@ -104,8 +112,10 @@ $borderRadius: 24px;
       }
 
       .select {
+
         display: flex;
         flex-direction: column;
+        max-width: 200px !important;
 
         [class*="-control"] {
           border: none !important;
@@ -173,10 +183,6 @@ $borderRadius: 24px;
         height: 24px !important;
         cursor: inherit;
         background: transparent;
-
-        &:hover {
-          background-color: $colorWhiteNeutral;
-        }
       }
     }
 

@@ -21,6 +21,7 @@ const Pagination = ({
               ? "pagination__page-number pagination__page-number--selected"
               : "pagination__page-number"
           }
+          key={i}
         >
           {i}
         </div>

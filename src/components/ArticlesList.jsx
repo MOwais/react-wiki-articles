@@ -3,7 +3,7 @@ import Article from "./Article";
 import Pagination from "./Pagination";
 import "./ArticlesList.scss";
 
-const ArticlesList = ({ pageSize, date }) => {
+const ArticlesList = ({ pageSize, date, country }) => {
   const [initialArticles, setInitialArticles] = useState([]);
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,14 +15,14 @@ const ArticlesList = ({ pageSize, date }) => {
     const day = new Date(date).getDate();
     const fetchArticles = async () => {
       const resp = await fetch(
-        `https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/${year}/${month}/${day}`
+        `https://wikimedia.org/api/rest_v1/metrics/pageviews/top-per-country/${country}/all-access/${year}/${month}/${day}`
       );
       const articles = await resp.json();
       setInitialArticles(articles.items[0].articles);
       setArticles(articles.items[0].articles);
     };
     fetchArticles();
-  }, [date]);
+  }, [date, country]);
 
   useEffect(() => {
     let data = [...initialArticles];
@@ -30,7 +30,7 @@ const ArticlesList = ({ pageSize, date }) => {
     let articlesRangeStart = articlesRangeEnd - pageSize;
     data = data.slice(articlesRangeStart, articlesRangeEnd);
     setArticles(data);
-  }, [currentPage, pageSize, initialArticles]);
+  }, [currentPage, pageSize, country, initialArticles]);
 
   return (
     <>

@@ -26,9 +26,36 @@ const RESULTS_SIZE_OPTIONS = [
     label: "200",
   },
 ];
-const SearchBar = ({ setDate, setPageSize, pageSize, date }) => {
+
+const COUNTRY_OPTIONS = [
+  {
+    value: "US",
+    label: "United States",
+  },
+  {
+    value: "JP",
+    label: "Japan",
+  },
+  {
+    value: "FR",
+    label: "France",
+  },
+  {
+    value: "DE",
+    label: "Germany",
+  },
+];
+const SearchBar = ({
+  setDate,
+  setPageSize,
+  setCountry,
+  pageSize,
+  date,
+  country,
+}) => {
   const [showDateFilter, setShowDateFilter] = useState(false);
   const [showNumResultsFilter, setShowNumResultsFilter] = useState(false);
+  const [showCountryFilter, setShowCountryFilter] = useState(false);
   const { innerWidth } = window;
   return (
     <div className="searchbar">
@@ -41,6 +68,7 @@ const SearchBar = ({ setDate, setPageSize, pageSize, date }) => {
           }}
           onFocus={() => {
             setShowNumResultsFilter(false);
+            setShowCountryFilter(false);
           }}
         >
           <img src={require("../assets/calendar.png")} />
@@ -57,15 +85,16 @@ const SearchBar = ({ setDate, setPageSize, pageSize, date }) => {
             />
           </div>
         </div>
-        <div className="searchbar__content__vl"></div>
+        <div className="searchbar__content__vl" />
         <div
-          className="searchbar__content__filter"
+          className="searchbar__content__filter searchbar__content__filter__country"
           onClick={(e) => setShowNumResultsFilter(!showNumResultsFilter)}
           onBlur={() => {
             setShowNumResultsFilter(false);
           }}
           onFocus={() => {
             setShowDateFilter(false);
+            setShowCountryFilter(false);
           }}
         >
           <img src={require("../assets/results_filter.png")} />
@@ -87,6 +116,44 @@ const SearchBar = ({ setDate, setPageSize, pageSize, date }) => {
                   ...provided,
                   backgroundColor: state.isSelected
                     ? "#E68A00"
+                    : state.isFocused
+                    ? "#f1f3f3"
+                    : "inherit",
+                }),
+              }}
+            />
+          </div>
+        </div>
+        <div className="searchbar__content__vl" />
+        <div
+          className="searchbar__content__filter searchbar__content__filter__country"
+          onClick={() => setShowCountryFilter(!showCountryFilter)}
+          onBlur={() => {
+            setShowCountryFilter(false);
+          }}
+          onFocus={() => {
+            setShowDateFilter(false);
+            setShowNumResultsFilter(false);
+          }}
+        >
+          <img src={require("../assets/country.png")} />
+          <div className="search__content__filter select">
+            <label>
+              Country {showCountryFilter ? <>&#x25B2;</> : <>&#x25BC;</>}{" "}
+            </label>
+            <Select
+              placeholder=""
+              value={COUNTRY_OPTIONS.filter(
+                (option) => option.value === country
+              )}
+              onChange={(e) => setCountry(e.value)}
+              options={COUNTRY_OPTIONS}
+              menuIsOpen={showCountryFilter}
+              styles={{
+                option: (provided, state) => ({
+                  ...provided,
+                  backgroundColor: state.isSelected
+                    ? "#2464C6"
                     : state.isFocused
                     ? "#f1f3f3"
                     : "inherit",
