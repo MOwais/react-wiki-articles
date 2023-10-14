@@ -58,6 +58,7 @@ $borderRadius: 24px;
           &__month-container {
             // font-family: Poppins;
             font-size: 14px !important;
+            width: 100%;
           }
 
           &__day {
@@ -89,7 +90,7 @@ $borderRadius: 24px;
           }
 
           &-popper {
-            transform: translate(230px, 220px) !important;
+            transform: translate(250px, 220px) !important;
           }
 
           &__header {
@@ -228,5 +229,15 @@ $borderRadius: 24px;
   .searchbar__search-button {
     width: 100% !important;
     max-width: none !important;
+  }
+
+  .searchbar__content__filter .date .react-datepicker-popper {
+    position: absolute;
+    inset: 0px auto auto 0px;
+    transform: translate3d(30px, 173px, 0px) !important;
+  }
+
+  .react-datepicker__month-container {
+    width: unset !important;
   }
 }

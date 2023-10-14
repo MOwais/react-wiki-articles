@@ -39,6 +39,9 @@ const SearchBar = ({ setDate, setPageSize, pageSize, date }) => {
           onBlur={() => {
             setShowDateFilter(false);
           }}
+          onFocus={() => {
+            setShowNumResultsFilter(false);
+          }}
         >
           <img src={require("../assets/calendar.png")} />
           <div className="search__content__filter date">
@@ -60,6 +63,9 @@ const SearchBar = ({ setDate, setPageSize, pageSize, date }) => {
           onClick={(e) => setShowNumResultsFilter(!showNumResultsFilter)}
           onBlur={() => {
             setShowNumResultsFilter(false);
+          }}
+          onFocus={() => {
+            setShowDateFilter(false);
           }}
         >
           <img src={require("../assets/results_filter.png")} />
