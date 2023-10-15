@@ -12,7 +12,7 @@ afterAll(() => server.close());
 
 const server = setupServer(
   rest.get(
-    "https://wikimedia.org/api/rest_v1/metrics/pageviews/top-per-country/US/all-access/2023/10/14",
+    "https://wikimedia.org/api/rest_v1/metrics/pageviews/top-per-country/US/all-access/2023/09/14",
     (req, res, ctx) => {
       return res(
         ctx.status(200),
@@ -49,8 +49,8 @@ const server = setupServer(
 
 function articlesListRenderUtil(testProps) {
   const props = {
-    pageSize: 3,
-    date: new Date(Date.now() - 86400000),
+    pageSize: 25,
+    date: new Date("Sun Sept 14 2023"),
     country: "US",
   };
 
