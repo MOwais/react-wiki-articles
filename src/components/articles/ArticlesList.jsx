@@ -9,6 +9,13 @@ const ArticlesList = ({ pageSize, date, country }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
+    /*
+     * /GET - top 1000 WikiPedia articles ranked by view
+     * @{country}
+     * @{year}
+     * @{month}
+     * @{day}
+     */
     let month = new Date(date).getMonth() + 1;
     month = month < 10 ? "0" + month : month;
     const year = new Date(date).getFullYear();
