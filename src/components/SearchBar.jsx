@@ -62,13 +62,10 @@ const SearchBar = ({
       <div className="searchbar__content">
         <div
           className="searchbar__content__filter"
-          onClick={(e) => setShowDateFilter(!showDateFilter)}
-          onBlur={() => {
-            setShowDateFilter(false);
-          }}
-          onFocus={() => {
-            setShowNumResultsFilter(false);
+          onClick={(e) => {
+            setShowDateFilter(!showDateFilter);
             setShowCountryFilter(false);
+            setShowNumResultsFilter(false);
           }}
         >
           <img src={require("../assets/calendar.png")} />
@@ -88,11 +85,8 @@ const SearchBar = ({
         <div className="searchbar__content__vl" />
         <div
           className="searchbar__content__filter searchbar__content__filter__country"
-          onClick={(e) => setShowNumResultsFilter(!showNumResultsFilter)}
-          onBlur={() => {
-            setShowNumResultsFilter(false);
-          }}
-          onFocus={() => {
+          onClick={(e) => {
+            setShowNumResultsFilter(!showNumResultsFilter);
             setShowDateFilter(false);
             setShowCountryFilter(false);
           }}
@@ -127,19 +121,16 @@ const SearchBar = ({
         <div className="searchbar__content__vl" />
         <div
           className="searchbar__content__filter searchbar__content__filter__country"
-          onClick={() => setShowCountryFilter(!showCountryFilter)}
-          onBlur={() => {
-            setShowCountryFilter(false);
-          }}
-          onFocus={() => {
-            setShowDateFilter(false);
+          onClick={(e) => {
+            setShowCountryFilter(!showCountryFilter);
             setShowNumResultsFilter(false);
+            setShowDateFilter(false);
           }}
         >
           <img src={require("../assets/country.png")} />
           <div className="search__content__filter select">
             <label>
-              Country {showCountryFilter ? <>&#x25B2;</> : <>&#x25BC;</>}{" "}
+              COUNTRY {showCountryFilter ? <>&#x25B2;</> : <>&#x25BC;</>}{" "}
             </label>
             <Select
               placeholder=""
