@@ -1,0 +1,249 @@
+$colorWhiteNeutral: #F5F7F7;
+$colorGrayNeutral: #A7AAAB;
+$borderNeutralColor: #E7EAEB;
+$colorWhite: #fff;
+$selectedDateColor: #B3CEC9;
+$brandGreenColor: #025B4B;
+$textPrimaryColor: #020202;
+$borderRadius: 24px;
+
+
+.searchbar {
+  padding: 16px;
+  display: flex;
+  gap: 16px;
+  border-radius: 100px;
+  background-color: $colorWhite;
+  max-height: 96px !important;
+  width: 800px;
+
+  &__content {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+
+    &__filter {
+      display: flex;
+      max-height: 72px;
+      max-width: 221px;
+      width: 100%;
+      gap: 24px;
+      border-radius: 100px;
+      align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        transition: background-color 300ms ease-out;
+        background-color: $colorWhiteNeutral;
+      }
+
+
+      &__country {
+        max-width: 175px !important;
+      }
+
+      &__select {
+        max-width: 200px !important;
+      }
+
+      .date {
+        display: flex;
+        flex-direction: column;
+
+        .react-datepicker {
+          font-weight: 500 !important;
+          border: none;
+          box-shadow: 0px 4px 24px 0px #0000001F;
+          border-radius: $borderRadius;
+          height: 280px;
+          width: 375px;
+
+
+          &__input-container {
+            margin-left: -4px;
+          }
+
+          &__month-container {
+            // font-family: Poppins;
+            font-size: 14px !important;
+            width: 100%;
+          }
+
+          &__day {
+            font-weight: 400;
+
+            &--selected {
+              border-radius: 100px;
+              background-color: $selectedDateColor;
+              color: $brandGreenColor;
+              font-weight: 500 !important;
+            }
+          }
+
+          &__day-name {
+            font-size: 12px;
+            color: $colorGrayNeutral;
+          }
+
+          &__current-month {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+
+          }
+
+          &__triangle::after,
+          &__triangle::before {
+            border: none !important;
+          }
+
+          &-popper {
+            transform: translate(250px, 220px) !important;
+          }
+
+          &__header {
+            // font-family: Poppins;
+            background-color: $colorWhite;
+            border: none;
+            font-weight: 500;
+            border-radius: $borderRadius;
+          }
+        }
+      }
+
+      .select {
+
+        display: flex;
+        flex-direction: column;
+        max-width: 200px !important;
+
+        [class*="-control"] {
+          border: none !important;
+          margin-left: -11px;
+          min-height: 24px !important;
+          cursor: pointer;
+          background: transparent;
+        }
+
+        [class*="-IndicatorsContainer"] {
+          display: none;
+        }
+
+        [class*="-Input"] {
+          margin: 0px;
+          padding-bottom: 0px;
+          padding-top: 0px;
+
+          input {
+            &:hover {
+              background-color: $colorWhiteNeutral;
+            }
+          }
+        }
+
+        [class*="-menu"] {
+          margin-top: 16px;
+          width: 200px;
+          height: 282px;
+          text-align: center;
+          padding: 32px 16px;
+          gap: 24px;
+          border-radius: $borderRadius;
+          margin-left: -85px;
+          box-shadow: 0px 4px 24px 0px #0000001F;
+
+          [class*="-option"] {
+            // font-family: Poppins;
+            font-weight: 400;
+          }
+        }
+      }
+
+      img {
+        height: 48px;
+        width: 48px;
+      }
+
+      label {
+        // font-family: Poppins;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 50% !important;
+        color: $colorGrayNeutral;
+        cursor: inherit;
+      }
+
+      input {
+        border: none;
+        // font-family: Poppins;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        height: 24px !important;
+        cursor: inherit;
+        background: transparent;
+      }
+    }
+
+    &__vl {
+      display: flex;
+      border-left: 1px solid $borderNeutralColor;
+      height: 72px;
+      width: 0px !important;
+    }
+  }
+
+  &__search-button {
+    max-width: 160px;
+    width: 160px;
+    height: 64px;
+    border-radius: 100px;
+    background-color: $brandGreenColor;
+    color: $colorWhite;
+    font-weight: 500;
+    // font-family: Poppins;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+@media(max-width: 768px) {
+
+  .searchbar,
+  .searchbar__content {
+    flex-direction: column;
+    max-height: none !important;
+    height: 100%;
+    width: 100%;
+    border-radius: 0px;
+  }
+
+  .searchbar {
+    width: unset;
+  }
+
+  .searchbar__content__vl {
+    display: none;
+  }
+
+  input,
+  .searchbar__content__filter,
+  .searchbar__search-button {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .searchbar__content__filter .date .react-datepicker-popper {
+    position: absolute;
+    inset: 0px auto auto 0px;
+    transform: translate3d(30px, 173px, 0px) !important;
+  }
+
+  .react-datepicker__month-container {
+    width: unset !important;
+  }
+}
