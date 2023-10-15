@@ -24,6 +24,10 @@ const ArticlesList = ({ pageSize, date, country }) => {
       const resp = await fetch(
         `https://wikimedia.org/api/rest_v1/metrics/pageviews/top-per-country/${country}/all-access/${year}/${month}/${day}`
       );
+      if (!resp.ok) {
+        alert("Something went wrong. Please try again later");
+        return;
+      }
       const articles = await resp.json();
       setInitialArticles(articles.items[0].articles);
       setArticles(articles.items[0].articles);
@@ -41,20 +45,27 @@ const ArticlesList = ({ pageSize, date, country }) => {
 
   return (
     <>
-      <div className="articles-list">
-        {articles.map((article, index) => (
-          <Article article={article} key={index} />
-        ))}
-      </div>
-      <div className="articles-list__pagination">
-        <Pagination
-          pageSize={pageSize}
-          totalCount={initialArticles.length}
-          data={articles}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
-      </div>
+      {articles.length === 0 && (
+        <div className="articles-list">No results found.</div>
+      )}
+      {articles.length >= 1 && (
+        <div className="articles-list">
+          {articles.map((article, index) => (
+            <Article article={article} key={index} />
+          ))}
+        </div>
+      )}
+      {articles.length >= 1 && (
+        <div className="articles-list__pagination">
+          <Pagination
+            pageSize={pageSize}
+            totalCount={initialArticles.length}
+            data={articles}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+        </div>
+      )}
     </>
   );
 };
