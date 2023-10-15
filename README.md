@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Project Name & Pitch
+
+Top Wikipedia Articles
+
+A Wikipedia articles app that lists the top 1000 Wikipedia articles ranked by views. It provides filters by date, page size, and country. The results can be paginated. Mobile responsive. Built using React v.18
+
 ## Available Scripts
 
 In the project directory, you can run:
