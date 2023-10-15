@@ -1,5 +1,5 @@
 import React from "react";
-import { formatNumberWithCommas } from "../utils";
+import { formatNumberWithCommas } from "../../utils";
 import "./Article.scss";
 
 const Article = ({ article }) => {

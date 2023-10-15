@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Article from "./Article";
-import Pagination from "./Pagination";
+import Pagination from "../Pagination";
 import "./ArticlesList.scss";
 
 const ArticlesList = ({ pageSize, date, country }) => {
