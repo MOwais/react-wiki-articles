@@ -7,6 +7,7 @@ const ArticlesList = ({ pageSize, date, country }) => {
   const [initialArticles, setInitialArticles] = useState([]);
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     /*
@@ -21,16 +22,19 @@ const ArticlesList = ({ pageSize, date, country }) => {
     const year = new Date(date).getFullYear();
     const day = new Date(date).getDate();
     const fetchArticles = async () => {
+      setIsLoading(true);
       const resp = await fetch(
         `https://wikimedia.org/api/rest_v1/metrics/pageviews/top-per-country/${country}/all-access/${year}/${month}/${day}`
       );
       if (!resp.ok) {
         alert("Something went wrong. Please try again later");
+        setIsLoading(false);
         return;
       }
       const articles = await resp.json();
       setInitialArticles(articles.items[0].articles);
       setArticles(articles.items[0].articles);
+      setIsLoading(false);
     };
     fetchArticles();
   }, [date, country]);
@@ -48,6 +52,7 @@ const ArticlesList = ({ pageSize, date, country }) => {
       {articles.length === 0 && (
         <div className="articles-list">No results found.</div>
       )}
+      {isLoading && <div className="articles-list">Loading...</div>}
       {articles.length >= 1 && (
         <div className="articles-list">
           {articles.map((article, index) => (
